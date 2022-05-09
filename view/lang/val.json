@@ -1,0 +1,16 @@
+{
+    "val": {
+        "home": "Inici",
+        "shop": "Tenda",
+        "services": "Servicis",
+        "portfolio": "Portfolio",
+        "catalog": "Cataleg",
+        "contact": "Cantactans",
+        "lenguage": "Llenguatge",
+        "Spanish": "Espanyol",
+        "English": "Angles",
+        "Valencian": "Valenciá",
+        "Frison_Occidental": "Frisó Occidental",
+        "Languages": "Llengües"
+    }
+}

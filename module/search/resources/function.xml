@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functions>
+    <function>
+        <name>modelo</name>
+        <uri>modelo</uri>
+    </function>
+    <function>
+        <name>marca</name>
+        <uri>marca</uri>
+    </function>
+    <function>
+        <name>autocomplete</name>
+        <uri>autocomplete</uri>
+    </function>
+</functions>

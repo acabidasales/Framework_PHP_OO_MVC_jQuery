@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functions>
+    <function>
+        <name>view</name>
+        <uri>view</uri>
+    </function>
+    <function>
+        <name>marcas_carousel</name>
+        <uri>marcas_carousel</uri>
+    </function>
+    <function>
+        <name>tipo_carousel</name>
+        <uri>tipo_carousel</uri>
+    </function>
+    <function>
+        <name>categoria_carousel</name>
+        <uri>categoria_carousel</uri>
+    </function>
+    <function>
+        <name>load_more</name>
+        <uri>load_more</uri>
+    </function>
+</functions>
