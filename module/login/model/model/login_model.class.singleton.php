@@ -26,6 +26,10 @@ class login_model {
         return $this -> bll -> get_social_login_BLL($args);
     }
 
+    public function get_social_register($args) {
+        return $this -> bll -> get_social_register_BLL($args);
+    }
+
     public function get_verify_email($args) {
         return $this -> bll -> get_verify_email_BLL($args);
     }

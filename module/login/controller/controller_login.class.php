@@ -10,6 +10,10 @@
 
         function social_login() {
             echo json_encode(common::load_model('login_model', 'get_social_login', $_POST['profile']));
+        }
+        
+        function social_register() {
+            echo json_encode(common::load_model('login_model', 'get_social_register', [$_POST['uid'], $_POST['username'], $_POST['email'], $_POST['avatar']]));
         } 
     
         function register() {

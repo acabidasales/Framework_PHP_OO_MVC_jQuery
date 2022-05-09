@@ -94,7 +94,7 @@ function social_login(param) {
     authService = firebase_config();
     authService.signInWithPopup(provider_config(param))
         .then(function(result) {
-            console.log('Hemos autenticado al usuario ', result.user);
+            console.log('Hemos autenticado al usuario ', result.user.uid);
             console.log(result.user.displayName);
             console.log(result.user.email);
             console.log(result.user.photoURL);
@@ -103,8 +103,30 @@ function social_login(param) {
                     url: '?page=login&op=social_login',
                     type: 'POST',
                     dataType: 'JSON',
-                    data: { 'profile': result.user.uID }
-                })
+                    data: { 'profile': result.user.uid }
+                }).done(function(data) {
+                    localStorage.setItem("token", data);
+                    window.location.href = "?page=home&op=view";
+                }).fail(function(e) {
+                    if (console && console.log) {
+                        console.log(e);
+                    }
+                    $.ajax({
+                        url: '?page=login&op=social_register',
+                        type: 'POST',
+                        dataType: 'JSON',
+                        data: { 'uid': result.user.uid, 'username': result.user.displayName, 'email': result.user.email, 'avatar': result.user.photoURL }
+                    }).done(function(data) {
+                        localStorage.setItem("token", data);
+                        window.location.href = "?page=home&op=view";
+                    }).fail(function(e) {
+                        if (console && console.log) {
+                            console.log(e);
+                        }
+
+                    });
+
+                });
             }
         })
         .catch(function(error) {

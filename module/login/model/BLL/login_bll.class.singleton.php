@@ -25,10 +25,16 @@
 			return $token;
 		}
 
+		public function get_social_register_BLL($args) {
+			$token = common::generate_Token_secure(20);
+			$this -> dao -> insert_social_login($this->db, $args[0], $args[1], $args[2], $args[3]);
+			return $token;
+		}
+
 		public function get_login_BLL($args) {
 			$user = $this -> dao -> select_user($this->db, $args[0]);
 			if (password_verify($args[1], $user[0]['password'])) {
-				$jwt = jwt_process::encode($user[0]['nombre']);
+				$jwt = jwt_process::encode($user[0]['username']);
 				$this -> dao -> update_token_jwt($this->db, $jwt, $user[0]['email']);
 				return json_encode($jwt);
 			}
@@ -37,7 +43,7 @@
 
 		public function get_social_login_BLL($args) {
 			$user = $this -> dao -> select_user($this->db, $args);
-			$jwt = jwt_process::encode($user[0]['nombre']);
+			$jwt = jwt_process::encode($user[0]['username']);
 			return json_encode($jwt);
 		}
 
