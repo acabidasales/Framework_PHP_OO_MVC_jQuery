@@ -48,8 +48,9 @@
 		}
 
 		public function get_verify_email_BLL($args) {
-			if($this -> dao -> select_verify_email($this->db, $args)){
-				$this -> dao -> update_verify_email($this->db, $args);
+			$token = str_replace( array( '\'', '"', ',' , ';', '<', '>', ), '',$args);
+			if($this -> dao -> select_verify_email($this->db, $token)){
+				$this -> dao -> update_verify_email($this->db, $token);
 				return 'verify';
 			}
 			return 'fail';
@@ -81,6 +82,10 @@
 		}
 
 		public function get_data_user_BLL($args) {
-			return $this -> dao -> select_data_user($this->db, $args);
+			
+			$token = str_replace( array( '\'', '"', ',' , ';', '<', '>' ), '', $args);
+			$JWT = jwt_process::decode($token);
+			$json = json_decode($JWT, TRUE);
+			return $this -> dao -> select_data_user($this->db, $json['name']);
 		}
 	}

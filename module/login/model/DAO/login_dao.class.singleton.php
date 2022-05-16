@@ -13,8 +13,8 @@
         }
 
         public function insert_user($db, $username, $email, $password, $avatar, $token){
-            $sql ="INSERT INTO users(`username`, `password`, `email`, `type`, `avatar`, `token_email`, `active`, `uID`)
-                VALUES ('$username','$password','$email','client', '$avatar','$token', 0, '')";
+            $sql ="INSERT INTO `users` (`username`, `password`, `email`, `type`, `avatar`, `uID`, `active`, `token_email`)     
+                VALUES ('$username','$password','$email','client', '$avatar','', 0, '$token')";
             return $stmt = $db->ejecutar($sql);
         }
         
@@ -30,9 +30,9 @@
             return $db->listar($stmt);
         }
 
-        public function insert_social_login($db, $id, $username, $email, $avatar){
-            $sql ="INSERT INTO `users`(`nombre`, `email`, `password`, `type`, `avatar`, `token_email`, `active`, `uID`)     
-                VALUES ('$username','$email','','client', '$avatar','', 1, '$id')";
+        public function insert_social_login($db, $uID, $username, $email, $avatar){
+            $sql ="INSERT INTO `users`(`username`, `email`, `password`, `type`, `avatar`, `token_email`, `active`, `uID`)     
+                VALUES ('$username','$email','','client', '$avatar','', 1, '$uID')";
             return $stmt = $db->ejecutar($sql);
         }
 
@@ -72,8 +72,8 @@
             return "ok";
         }
 
-        public function select_data_user($db, $token){
-			$sql = "SELECT `id`, `nombre`, `email`, `password`, `type`, `avatar`, `token_email`, `active` FROM `users` WHERE id=$token";
+        public function select_data_user($db, $username){
+			$sql = "SELECT `uID`, `username`, `email`, `password`, `type`, `avatar`, `token_email`, `active` FROM `users` WHERE username='$username'";
             $stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
         }

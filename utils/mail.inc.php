@@ -6,16 +6,18 @@
                     $email['toEmail'] = 'acabidasales@gmail.com';
                     break;
                 case 'validate';
+                    $email['toEmail'] = 'acabidasales@gmail.com';
                     $email['fromEmail'] = 'acabidasales@gmail.com';
                     $email['inputEmail'] = 'acabidasales@gmail.com';
                     $email['inputMatter'] = 'Email verification';
-                    $email['inputMessage'] = "<h2>Email verification.</h2><a href = 'http://localhost/website/login/verify/$email[token]'>Click here for verify your email.</a>";
+                    $email['inputMessage'] = "<h2>Email verification.</h2><a href = 'http://localhost/framework_PHP_OO_MVC_jQuery/index.php?page=login&op=verify_email&token=$email[token]'>Click here for verify your email.</a>";
                     break;
                 case 'recover';
+                    $email['toEmail'] = 'acabidasales@gmail.com';
                     $email['fromEmail'] = 'acabidasales@gmail.com';
                     $email['inputEmail'] = 'acabidasales@gmail.com';
                     $email['inputMatter'] = 'Recover password';
-                    $email['inputMessage'] = "<a href = 'http://localhost/website/login/recover/$email[token]'>Click here for recover your password.</a>";
+                    $email['inputMessage'] = "<a href = 'http://localhost/framework_PHP_OO_MVC_jQuery/index.php?page=login&op=view&condi=recover&token=$email[token]'>Click here for recover your password.</a>";
                     break;
             }
             return self::send_mailgun($email);

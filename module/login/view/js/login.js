@@ -74,8 +74,10 @@ function login() {
         $.ajax({
             url: "?page=login&op=login",
             type: "POST",
+            dataType: "JSON",
             data: data,
         }).done(function(data) {
+            console.log(data.replace(/"/g, ''));
             if (data == "error") {
                 $("#error_password").html('La contraseña no es correcta');
             } else {
@@ -102,7 +104,7 @@ function social_login(param) {
                 $.ajax({
                     url: '?page=login&op=social_login',
                     type: 'POST',
-                    dataType: 'JSON',
+                    dataType: '',
                     data: { 'profile': result.user.uid }
                 }).done(function(data) {
                     localStorage.setItem("token", data);
@@ -114,7 +116,7 @@ function social_login(param) {
                     $.ajax({
                         url: '?page=login&op=social_register',
                         type: 'POST',
-                        dataType: 'JSON',
+                        dataType: '',
                         data: { 'uid': result.user.uid, 'username': result.user.displayName, 'email': result.user.email, 'avatar': result.user.photoURL }
                     }).done(function(data) {
                         localStorage.setItem("token", data);
@@ -251,15 +253,15 @@ function register() {
             if (data == "error") {
                 $("#error_password").html('El email ya esta registrado');
             } else {
+                console.log(data);
                 alert('Email sended');
                 localStorage.setItem("token", data);
                 window.location.href = "?page=login&op=view";
             }
-        }).fail(function(data, textStatus) {
-            if (console && console.log) {
-                console.log(data);
-                console.log("La solicitud ha fallado: " + textStatus);
-            }
+        }).fail(function(a, b, e) {
+            console.log(a);
+            console.log(b);
+            console.log(e);
         });
     }
 }
@@ -316,13 +318,16 @@ function send_recover_password() {
         var data = { email: $('#email').val() };
         $.ajax({
             url: '?page=login&op=send_recover_email',
-            dataType: 'json',
+            dataType: '',
             type: "POST",
             data: data,
         }).done(function(data) {
+            console.log(data);
             alert('Email sended');
-        }).fail(function(textStatus) {
+        }).fail(function(e, a, textStatus) {
             if (console && console.log) {
+                console.log(e);
+                console.log(a);
                 console.log("La solicitud ha fallado: " + textStatus);
             }
         });
@@ -451,6 +456,20 @@ function load_all() {
     } */
 }
 
+function load_content() {
+
+    /* let path = window.location.pathname.split('/');
+    if (path[3] === 'recover') {
+        load_form_new_password(path[5]);
+    } else if (path[4] === 'verify') {
+        token = path[5].split('%22');
+        token = token[1];
+        console.log(token);
+        $.ajax('?page=login&op=verify_email', 'POST', 'JSON', { token })
+    } */
+}
+
 $(document).ready(function() {
     load_all();
+    load_content();
 });

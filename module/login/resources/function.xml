@@ -9,16 +9,12 @@
         <uri>login</uri>
     </function>
     <function>
-        <name>social_login</name>
-        <uri>social_login</uri>
-    </function>
-    <function>
-        <name>social_register</name>
-        <uri>social_register</uri>
-    </function>
-    <function>
         <name>register</name>
         <uri>register</uri>
+    </function>
+    <function>
+        <name>logout</name>
+        <uri>logout</uri>
     </function>
     <function>
         <name>verify_email</name>
@@ -35,10 +31,6 @@
     <function>
         <name>new_password</name>
         <uri>new_password</uri>
-    </function>
-    <function>
-        <name>logout</name>
-        <uri>logout</uri>
     </function>
     <function>
         <name>data_user</name>

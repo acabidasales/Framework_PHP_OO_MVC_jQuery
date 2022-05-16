@@ -890,7 +890,7 @@ function click_like() {
             $(this).children("img").removeClass("bx-heart").addClass("no-heart");
             $(this).children("img").removeClass("bxs-heart").addClass("no-heart");
             if (confirm('Debes identificarte para dar like. Quieres identificarte?')) {
-                window.location.href = 'index.php?page=login&op=login_view'
+                window.location.href = 'index.php?page=login&op=view'
             }
         } else {
             /* ajaxPromise("module/shop/controller/controller_shop.php?op=control_likes&id=" + this.getAttribute('id') + "&username=" + localStorage.getItem('token'), 'GET', 'JSON') */
