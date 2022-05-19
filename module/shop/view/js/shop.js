@@ -267,26 +267,16 @@ function load_shop_details(id, loadeds = 0, items = 4) {
                     }
                     $(".wrapper").on("click", function() {
                         var id = this.getAttribute('id');
-                        ajaxPromise("index.php?page=shop&op=update_count&ID=" + id, 'GET', 'JSON')
-                            .then(function() {
-                                $("#results").empty();
-                                $("#more").remove();
-                                load_shop_details(id);
-                            }).catch(function(e) {
-                                console.log(e);
-                            });
+                        $("#results").empty();
+                        $("#more").remove();
+                        load_shop_details(id);
                     })
                 })
                 $(".wrapper").on("click", function() {
                     var id = this.getAttribute('id');
-                    ajaxPromise("index.php?page=shop&op=update_count&ID=" + id, 'GET', 'JSON')
-                        .then(function() {
-                            $("#results").empty();
-                            $("#more").remove();
-                            load_shop_details(id);
-                        }).catch(function(e) {
-                            console.log(e);
-                        });
+                    $("#results").empty();
+                    $("#more").remove();
+                    load_shop_details(id);
                 })
             }).fail(function(e) {
                 /* console.log(e); */

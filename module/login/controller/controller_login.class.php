@@ -3,7 +3,10 @@
         function view() {
             if (isset ($_GET['condi'])){
                 if ($_GET['condi'] == 'recover'){
-                    common::load_view('top_page_login.php', VIEW_PATH_LOGIN . 'recover.html');
+                    $token = $_GET['token'];
+                    echo "<p id='token' class='". $token . "' hidden></p>";
+                    
+                    common::load_view('top_page_recover.php', VIEW_PATH_LOGIN . 'recover.html');
                 }else {
                     common::load_view('top_page_login.php', VIEW_PATH_LOGIN . 'login.html');
                 }
@@ -17,8 +20,9 @@
         }
 
         function social_login() {
-            echo json_encode($_POST);
-            exit;
+            /* $resultado = json_encode(common::load_model('login_model', 'get_select_user', $_POST['uid'])); */
+            echo json_encode(common::load_model('login_model', 'get_social_login', $_POST));
+            
         } 
 
         function social_register() {

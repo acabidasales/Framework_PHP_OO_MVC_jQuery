@@ -96,7 +96,8 @@
 		}
 		
 		public function get_load_like_BLL($args) {
-			$jwt = jwt_process::decode($args);
+			$token = str_replace( array( '\'', '"', ',' , ';', '<', '>', ), '',$args);
+			$jwt = jwt_process::decode($token);
 			$jwt = json_decode($jwt, TRUE);
 			return $this -> dao -> select_load_likes($this->db, $jwt['name']);
 		}
@@ -117,6 +118,25 @@
             $res[0] = $marcas;
             $res[1][] = $comb;
 			return $res;
+		}
+
+		public function get_control_likes_BLL($args) {
+			$token = str_replace( array( '\'', '"', ',' , ';', '<', '>', ), '',$args[1]);
+			$jwt = jwt_process::decode($token);
+			$jwt = json_decode($jwt, TRUE);
+			$rdo = $this -> dao -> select_likes($this->db, $args[0], $jwt['name']);
+			$dinfo = array();
+			foreach ($rdo as $row) {
+				array_push($dinfo, $row);
+			}
+			if(count($dinfo) === 0){
+				$this -> dao -> insert_likes($this->db, $args[0], $jwt['name']);
+				return "0";
+			}else{
+				$this -> dao -> delete_likes($this->db, $args[0], $jwt['name']);
+				return "1";
+			}
+            
 		}
 	}
 ?>

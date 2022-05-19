@@ -67,7 +67,7 @@
         }
 
         public function update_new_passwoord($db, $token, $password){
-            $sql = "UPDATE `users` SET `password`= '$password', `token_email`= '' WHERE `token_email` = '$token'";
+            $sql = "UPDATE `users` SET `password`= '$password', `token_email`= '' WHERE `token_email` = $token";
             $stmt = $db->ejecutar($sql);
             return "ok";
         }
@@ -78,6 +78,11 @@
             return $db->listar($stmt);
         }
 
+        public function select_user_by_uid($db, $uid){
+			$sql = "SELECT `uID`, `username`, `email`, `password`, `type`, `avatar`, `token_email`, `active` FROM `users` WHERE uID='$uid'";
+            $stmt = $db->ejecutar($sql);
+            return $db->listar($stmt);
+        }
     }
 
 ?>

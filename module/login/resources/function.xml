@@ -36,4 +36,12 @@
         <name>data_user</name>
         <uri>data_user</uri>
     </function>
+    <function>
+        <name>social_login</name>
+        <uri>social_login</uri>
+    </function>
+    <function>
+        <name>social_register</name>
+        <uri>social_register</uri>
+    </function>
 </functions>

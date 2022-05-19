@@ -82,7 +82,7 @@
         }
 
         function load_like() {
-            echo json_encode(common::load_model('shop_model', 'get_load_like', $_GET['ID']));
+            echo json_encode(common::load_model('shop_model', 'get_load_like', $_GET['username']));
         }
 
         function click_like() {
@@ -91,6 +91,10 @@
 
         function print_filter_data() {
             echo json_encode(common::load_model('shop_model', 'get_print_filter_data'));
+        }
+
+        function control_likes() {
+            echo json_encode(common::load_model('shop_model', 'get_control_likes', [$_GET['id'], $_GET['username']]));
         }
     }
 ?>

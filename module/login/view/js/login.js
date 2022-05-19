@@ -96,17 +96,19 @@ function social_login(param) {
     authService = firebase_config();
     authService.signInWithPopup(provider_config(param))
         .then(function(result) {
-            console.log('Hemos autenticado al usuario ', result.user.uid);
+            /* console.log('Hemos autenticado al usuario ', result.user.uid);
             console.log(result.user.displayName);
             console.log(result.user.email);
-            console.log(result.user.photoURL);
+            console.log(result.user.photoURL); */
+            var data = { 'uid': result.user.uid };
             if (result) {
                 $.ajax({
                     url: '?page=login&op=social_login',
                     type: 'POST',
-                    dataType: '',
-                    data: { 'profile': result.user.uid }
+                    dataType: 'JSON',
+                    data: data
                 }).done(function(data) {
+                    console.log(data);
                     localStorage.setItem("token", data);
                     window.location.href = "?page=home&op=view";
                 }).fail(function(e) {

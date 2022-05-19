@@ -164,7 +164,7 @@ function clicks() {
         localStorage.removeItem('filter_marcas')
         localStorage.setItem('filter_marcas', this.id);
         setTimeout(function() {
-            window.location.href = 'index.php?page=controller_shop&op=list';
+            window.location.href = 'index.php?page=shop&op=view';
         }), 250;
     })
 
@@ -174,7 +174,7 @@ function clicks() {
         localStorage.removeItem('filter')
         localStorage.setItem('filter', JSON.stringify(filter));
         setTimeout(function() {
-            window.location.href = 'index.php?page=controller_shop&op=list';
+            window.location.href = 'index.php?page=shop&op=view';
         }), 250;
     })
 
@@ -184,7 +184,7 @@ function clicks() {
         localStorage.removeItem('filter_combustible')
         localStorage.setItem('filter_combustible', this.id);
         setTimeout(function() {
-            window.location.href = 'index.php?page=controller_shop&op=list';
+            window.location.href = 'index.php?page=shop&op=view';
         }), 250;
     })
 }

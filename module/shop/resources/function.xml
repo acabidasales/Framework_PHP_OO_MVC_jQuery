@@ -92,4 +92,8 @@
         <name>print_filter_data</name>
         <uri>print_filter_data</uri>
     </function>
+    <function>
+        <name>control_likes</name>
+        <uri>control_likes</uri>
+    </function>
 </functions>

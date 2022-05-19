@@ -42,7 +42,7 @@
 		}
 
 		public function get_social_login_BLL($args) {
-			$user = $this -> dao -> select_user($this->db, $args);
+			$user = $this -> dao -> select_user_by_uid($this->db, $args);
 			$jwt = jwt_process::encode($user[0]['username']);
 			return json_encode($jwt);
 		}
@@ -67,7 +67,8 @@
 		}
 
 		public function get_verify_token_BLL($args) {
-			if($this -> dao -> select_verify_email($this->db, $args)){
+			$token = str_replace( array( '\'', '"', ',' , ';', '<', '>' ), '', $args);
+			if($this -> dao -> select_verify_email($this->db, $token)){
 				return 'verify';
 			}
 			return 'fail';
@@ -87,5 +88,9 @@
 			$JWT = jwt_process::decode($token);
 			$json = json_decode($JWT, TRUE);
 			return $this -> dao -> select_data_user($this->db, $json['name']);
+		}
+
+		public function select_user_BLL($args) {
+			return $this -> dao -> select_user_by_uid($this->db, $args);
 		}
 	}

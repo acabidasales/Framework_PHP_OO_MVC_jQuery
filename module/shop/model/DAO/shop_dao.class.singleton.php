@@ -191,13 +191,19 @@
         public function insert_likes($db, $id, $user){
             $sql = "INSERT INTO likes (username, ID_car) VALUES ('$user','$id')";
             $stmt = $db->ejecutar($sql);
-            return "like";
+            return $sql;
         }
 
         function delete_likes($db, $id, $user){
             $sql = "DELETE FROM likes WHERE username='$user' AND ID_car='$id'";
             $stmt = $db->ejecutar($sql);
-            return "unlike";
+            return $stmt;
+        }
+
+        function select_load_likes($db, $username){
+            $sql = "SELECT ID_car FROM likes WHERE username='$username'";
+            $stmt = $db->ejecutar($sql);
+            return $db->listar($stmt);
         }
     }
 

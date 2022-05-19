@@ -101,5 +101,9 @@
         public function get_print_filter_data() {
             return $this -> bll -> get_print_filter_data_BLL();
         }
+
+        public function get_control_likes($args) {
+            return $this -> bll -> get_control_likes_BLL($args);
+        }
     }
 ?>

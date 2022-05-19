@@ -26,6 +26,10 @@
             return $this -> bll -> get_social_login_BLL($args);
         }
 
+        public function get_social_register($args) {
+            return $this -> bll -> get_social_register_BLL($args);
+        }
+
         public function get_verify_email($args) {
             return $this -> bll -> get_verify_email_BLL($args);
         }
@@ -47,6 +51,10 @@
         }
 
         public function get_data_user($args) {
+            return $this -> bll -> get_data_user_BLL($args);
+        }
+
+        public function get_select_user($args) {
             return $this -> bll -> get_data_user_BLL($args);
         }
     }
